@@ -1,6 +1,6 @@
 resource "aws_vpc" "main" {
-  cidr_block = var.cidr
-  tags = merge(local.tags, { name = "${var.env}-vpc"})
+  cidr_block  = var.cidr
+  tags        = merge(local.tags, { name = "${var.env}-vpc"})
 }
 
 module "subnets" {
@@ -13,8 +13,8 @@ module "subnets" {
 }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.main.id
-  tags = merge(local.tags, { name = "${var.env}-igw"})
+  vpc_id      = aws_vpc.main.id
+  tags        = merge(local.tags, { name = "${var.env}-igw"})
 }
 
 resource "aws_route" "igw" {
@@ -47,7 +47,7 @@ resource "aws_vpc_peering_connection" "peering" {
   peer_vpc_id   = aws_vpc.main.id
   vpc_id        = var.default_vpc_id
   auto_accept   = true
-  tags = merge(local.tags, { name = "${var.env}-peer"})
+  tags          = merge(local.tags, { name = "${var.env}-peer"})
 }
 
 resource "aws_route" "peer" {
