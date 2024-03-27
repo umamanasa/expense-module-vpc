@@ -63,6 +63,8 @@ resource "aws_route" "default-vpc-peer-entry" {
   vpc_peering_connection_id = aws_vpc_peering_connection.peering.id
 }
 
+
+
 # To launch an instance
 #resource "aws_instance" "main" {
 #  instance_type           = "t2.micro"
